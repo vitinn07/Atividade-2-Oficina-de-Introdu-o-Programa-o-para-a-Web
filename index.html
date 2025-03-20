@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Esfera</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&family=Roboto+Mono:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #282c36;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 24px;
+        }
+
+        .container {
+            background: #3a3f4b;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            margin: auto;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        input {
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        button {
+            background: #ff4757;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #e84118;
+        }
+
+        .resultado {
+            margin-top: 15px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Calculadora de Esfera</h1>
+    <div class="container">
+        <label for="raio">Digite o raio:</label>
+        <input type="number" id="raio" placeholder="Ex: 5">
+        <button onclick="calcular()">Calcular</button>
+        <div class="resultado" id="resultado"></div>
+    </div>
+
+    <script>
+        function calcular() {
+            let raio = parseFloat(document.getElementById('raio').value);
+            if (isNaN(raio) || raio <= 0) {
+                document.getElementById('resultado').innerHTML = "Por favor, insira um número válido.";
+                return;
+            }
+
+            let pi = Math.PI;
+            let comprimento = 2 * pi * raio;
+            let area = pi * Math.pow(raio, 2);
+            let volume = (4/3) * pi * Math.pow(raio, 3);
+
+            document.getElementById('resultado').innerHTML = `
+                <p>Comprimento: ${comprimento.toFixed(2)}</p>
+                <p>Área: ${area.toFixed(2)}</p>
+                <p>Volume: ${volume.toFixed(2)}</p>
+            `;
+        }
+    </script>
+
+</body>
+</html>
